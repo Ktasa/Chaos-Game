@@ -1,10 +1,46 @@
+#include <SFML/Graphics.hpp>
 
-
-
-
+using namespace sf;
 
 int main()
 {
+    VideoMode vm(1920, 1080);
+
+    RenderWindow window(vm, "Chaos Game", Style::Fullscreen);
+
+    RectangleShape rectangle;
+
+    while(window.isOpen())
+    {
+        /*
+        ********************
+        Handle user's input
+        ********************
+        */
+
+        if(Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
+
+        /*
+        *********************
+        Update the scene
+        *********************
+        */
+
+        //Change variable values and access functions here?
+
+        /*
+        **********************
+        Draw the scene
+        **********************
+        */
+
+        //Show everything that we drew
+        window.display();
+    }
+    
     /*input_points();
     function: prompt and get user input for 3 points and the starting coordinate
     -set up environement that displays screen and allows mouse interaction
