@@ -1,5 +1,7 @@
 #include "points.h"
 #include <vector>
+#include <cmath>
+#include <cstdlib>
 using namespace std;
 
 points::points(point v1, point v2, point v3, point start_input){
