@@ -12,6 +12,8 @@ int main()
 
     while(window.isOpen())
     {
+        points triangle();
+        inputPoints(triangle);
         /*
         ********************
         Handle user's input
