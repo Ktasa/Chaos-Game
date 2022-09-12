@@ -1,0 +1,33 @@
+include sfml files
+include "points.h"
+
+points inputPoints(points& shape);
+void outputPoints(points& shape);
+
+int main()
+{
+    points triangle(); //empty points object
+
+    //create window, etc
+
+    while (window is open)
+    {
+    
+    //splitting the input and output phase into two functions
+    //might be the cleanest way to write main()
+    
+    inputPoints(triangle); //pass by reference
+    - loop checks for escape key to exit
+    - prompt user to input points via mouse
+    - update triangle object
+
+    void outputPoints(triangle); //pass by reference
+    - loop checks for escape key to exit
+    - use "triangle.calcNextPoint();" to add a new point to the vector
+    - clear window
+    - triangle.drawAllPoints(); draw every point
+
+    }
+
+    return 0;
+}
