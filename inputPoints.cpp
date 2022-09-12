@@ -6,28 +6,33 @@ using namespace sf;
 //possibly return int code to exit program
 void inputPoints(points& shape)
 {
-    /*Font fontName;
-    fontName.loadFromFile("fontName.ttf");
+    Font final;
+    fontName.loadFromFile("finalf.ttf");
     Text prompt1, prompt2;
-    prompt1.setString("Click 3 Points On The Screen To Create A Triangle");
+    //prompt1.setString("Click 3 Points On The Screen To Create A Triangle");
+    prompt1.setString("CLICK THREE POINTS ON THE SCREEN TO CREATE A TRIANGLE");
     prompt1.setCharacterSize(75);
     prompt1.setFillColor(Color::White);
-    prompt1.setFont(fontName);
+    prompt1.setFont(finalf);
 
-    prompt2.setString("Click Anywhere To Start The Chaos Game");
+    FloatRect textRect = prompt1.getLocalBounds();
+    prompt1.setOrigin(textRect.left + textRect.width / 2.0f,
+        textRect.top + textRect.height / 2.0f);
+    prompt1.setPosition(1920 / 2.0f, 1080 / 2.0f);
+
+    //prompt2.setString("Click Anywhere To Start The Chaos Game");
+    prompt2.setString("CLICK ANYWHERE TO START THE CHAOS GAME");
     prompt2.setCharacterSize(75);
     prompt2.setFillColor(Color::White);
-    prompt2.setFont(fontName);
+    prompt2.setFont(finalf);
 
-    FloatRect textRect = test.getLocalBounds();
-    text.setOrigin(textRect.left + textRect.width / 2.0f,
-        textRect.top + textRect.height / 2.0f);
-    text.setPosition(1920 / 2.0f, 1080 / 2.0f);
-    
-    window.draw(text);
-    */
-    //output prompt text
-    //"Click 3 points on the screen to create the triangle"
+    FloatRect textRect2 = prompt2.getLocalBounds();
+    prompt2.setOrigin(textRect2.left + textRect2.width / 2.0f,
+        textRect2.top + textRect2.height / 2.0f);
+    prompt2.setPosition(1920 / 2.0f, 1080 / 2.0f);
+
+    window.draw(prompt1);
+
     bool exiting = false;
     point p;
     numInput = 0;
@@ -40,7 +45,7 @@ void inputPoints(points& shape)
         }
         if (numInput==3) //4th point has different prompt
         {
-            //output "click anywhere to start the chaos game"
+            window.draw(prompt2);
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
@@ -48,6 +53,7 @@ void inputPoints(points& shape)
             p.x = localPosition.x;
             p.y = localPosition.y;
             shape.allPoints.push_back(p);
+            if (numInput == 2) {window.clear();}
         }
     }
 }
