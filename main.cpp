@@ -8,12 +8,13 @@ int main()
 {
     VideoMode vm(1920, 1080);
 
-    RenderWindow window(vm, "Chaos Game", Style::Fullscreen);
+    RenderWindow window(vm, "Chaos Game", Style::Default);
 
     RectangleShape rectangle;
 
     while(window.isOpen())
     {
+
         points triangle;
         inputPoints(triangle, window);
         /*
