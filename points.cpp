@@ -8,16 +8,9 @@ using namespace std;
 #include <iostream>
 using namespace std;
 
-//this empty constructor might be more useful
-//since it allows the object to be initialized with no points
-points::points(){}
 
-points::points(point v1, point v2, point v3, point start_input){
-    allPoints.push_back(v1);
-    allPoints.push_back(v2);
-    allPoints.push_back(v3);
-    allPoints.push_back(start_input);
-}
+
+points::points(){}
 
 void points::addPoint(point p)
 {
