@@ -7,7 +7,7 @@ void inputPoints(points& shape, sf::RenderWindow &window)
 {
     Font final;
     final.loadFromFile("finalf.ttf");
-    
+
     Text prompt1, prompt2;
     prompt1.setString("CLICK THREE POINTS ON THE SCREEN TO CREATE A TRIANGLE");
     prompt1.setCharacterSize(75);
@@ -57,8 +57,10 @@ void inputPoints(points& shape, sf::RenderWindow &window)
                     p.y = localPosition.y;
                     shape.addPoint(p);
                     numInput++;
-                    if (numInput == 2) {window.clear();}
+                    if (numInput == 1) {window.clear();}
                     mouseIsPressed = false;
+                    shape.drawPoint(p, window);
+                    window.display();
                 }
             }
         }

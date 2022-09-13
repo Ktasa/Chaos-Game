@@ -33,6 +33,12 @@ void points::calcNextPoint(){
     allPoints.push_back(p);
 }
 
+void points::drawPoint(point p, sf::RenderWindow &window)
+{
+    sf::Vertex dot(sf::Vector2f(p.x, p.y), sf::Color::White);
+    window.draw(&dot, 1, sf::Points);
+}
+
 void points::drawAllPoints(sf::RenderWindow &window)
 {
     for(int i=0; i<allPoints.size(); i++)
