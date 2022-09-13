@@ -2,6 +2,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 using namespace sf;
+//#include <iostream>
+//using namespace std;
 
 //possibly return int code to exit program
 void inputPoints(points& shape, sf::RenderWindow &window)
@@ -31,8 +33,8 @@ void inputPoints(points& shape, sf::RenderWindow &window)
         textRect2.top + textRect2.height / 2.0f);
     prompt2.setPosition(1920 / 2.0f, 1080 / 2.0f);
 
-    window.draw(prompt1); //how to do things with window inside function?
-
+    window.draw(prompt1);
+    window.display();
     bool exiting = false;
     point p;
     int numInput = 0;
@@ -45,16 +47,27 @@ void inputPoints(points& shape, sf::RenderWindow &window)
         }
         if (numInput==3) //4th point has different prompt
         {
-            //window.draw(prompt2);
+            window.draw(prompt2);
+            window.display();
+            
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            sf::Vector2i localPosition = sf::Mouse::getPosition(window);
-            p.x = localPosition.x;
-            p.y = localPosition.y;
-            shape.addPoint(p);
-            numInput++;
-            if (numInput == 2) {window.clear();}
+            bool mouseIsPressed = true;
+            while (numInput < 4 && !exiting && mouseIsPressed)
+            {
+                if ( !(sf::Mouse::isButtonPressed(sf::Mouse::Left)) )
+                {
+                    sf::Vector2i localPosition = sf::Mouse::getPosition(window);
+                    p.x = localPosition.x;
+                    p.y = localPosition.y;
+                    //cout << p.x << " " << p.y << endl;
+                    shape.addPoint(p);
+                    numInput++;
+                    if (numInput == 2) {window.clear();}
+                    mouseIsPressed = false;
+                }
+            }
         }
     }
 }
