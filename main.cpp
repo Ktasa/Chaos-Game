@@ -3,6 +3,7 @@ using namespace sf;
 #include "points.h"
 
 void inputPoints(points& shape, sf::RenderWindow &window);
+void outputPoints(points &shape, RenderWindow &window);
 
 int main()
 {
@@ -12,39 +13,9 @@ int main()
 
     RectangleShape rectangle;
 
-    while(window.isOpen())
-    {
+    points triangle;
+    inputPoints(triangle, window);
+    outputPoints(triangle, window);
 
-        points triangle;
-        inputPoints(triangle, window);
-        /*
-        ********************
-        Handle user's input
-        ********************
-        */
-
-        if(Keyboard::isKeyPressed(Keyboard::Escape))
-        {
-            window.close();
-        }
-
-        /*
-        *********************
-        Update the scene
-        *********************
-        */
-
-        //Change variable values and access functions here?
-
-        /*
-        **********************
-        Draw the scene
-        **********************
-        */
-
-        //Show everything that we drew
-        window.display();
-    }
-    
     return 0;
 }
