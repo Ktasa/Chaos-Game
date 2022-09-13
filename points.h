@@ -20,6 +20,8 @@ public:
     void addPoint(point p); //vector is private so access here
     void calcNextPoint();
     void drawAllPoints(sf::RenderWindow &window);
+    void emptyPoints();
+    
 };
 
 #endif // POINTS_H

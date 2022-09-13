@@ -49,3 +49,8 @@ void points::drawAllPoints(sf::RenderWindow &window)
     }
 }
 
+void points::emptyPoints()
+{
+    allPoints.clear();
+}
+

@@ -14,8 +14,11 @@ int main()
     RectangleShape rectangle;
 
     points triangle;
-    inputPoints(triangle, window);
-    outputPoints(triangle, window);
+    while(window.isOpen())
+    {
+        inputPoints(triangle, window);
+        outputPoints(triangle, window);
+    }
 
     return 0;
 }

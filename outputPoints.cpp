@@ -21,13 +21,23 @@ void outputPoints(points& shape, sf::RenderWindow &window)
                 window.close();
             }
     }
-    //allows closing window after program output finishes
-    //maybe move to main
-    while(window.isOpen())
+
+    while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
     {
         if(Keyboard::isKeyPressed(Keyboard::Escape))
         {
             window.close();
         }
     }
+    //exhaust leftover mouse inputs
+    //can be made easier with events?
+    while(window.isOpen() && (sf::Mouse::isButtonPressed(sf::Mouse::Left)))
+    {
+        if(Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
+    }
+    window.clear();
+    shape.emptyPoints();
 }
