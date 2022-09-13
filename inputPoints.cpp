@@ -2,16 +2,13 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 using namespace sf;
-//#include <iostream>
-//using namespace std;
 
-//possibly return int code to exit program
 void inputPoints(points& shape, sf::RenderWindow &window)
 {
     Font final;
     final.loadFromFile("finalf.ttf");
+    
     Text prompt1, prompt2;
-    //prompt1.setString("Click 3 Points On The Screen To Create A Triangle");
     prompt1.setString("CLICK THREE POINTS ON THE SCREEN TO CREATE A TRIANGLE");
     prompt1.setCharacterSize(75);
     prompt1.setFillColor(Color::White);
@@ -22,7 +19,6 @@ void inputPoints(points& shape, sf::RenderWindow &window)
         textRect.top + textRect.height / 2.0f);
     prompt1.setPosition(1920 / 2.0f, 1080 / 2.0f);
 
-    //prompt2.setString("Click Anywhere To Start The Chaos Game");
     prompt2.setString("CLICK ANYWHERE TO START THE CHAOS GAME");
     prompt2.setCharacterSize(75);
     prompt2.setFillColor(Color::White);
@@ -35,33 +31,30 @@ void inputPoints(points& shape, sf::RenderWindow &window)
 
     window.draw(prompt1);
     window.display();
-    bool exiting = false;
+
     point p;
     int numInput = 0;
-    while (numInput < 4 && !exiting)
+    while (numInput < 4 && window.isOpen())
     {
         if(Keyboard::isKeyPressed(Keyboard::Escape))
         {
-            exiting = true;
-            //window.close();
+            window.close();
         }
         if (numInput==3) //4th point has different prompt
         {
             window.draw(prompt2);
             window.display();
-            
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             bool mouseIsPressed = true;
-            while (numInput < 4 && !exiting && mouseIsPressed)
+            while (numInput < 4 && mouseIsPressed)
             {
                 if ( !(sf::Mouse::isButtonPressed(sf::Mouse::Left)) )
                 {
                     sf::Vector2i localPosition = sf::Mouse::getPosition(window);
                     p.x = localPosition.x;
                     p.y = localPosition.y;
-                    //cout << p.x << " " << p.y << endl;
                     shape.addPoint(p);
                     numInput++;
                     if (numInput == 2) {window.clear();}
