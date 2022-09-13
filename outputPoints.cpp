@@ -16,12 +16,16 @@ void outputPoints(points& shape, sf::RenderWindow &window)
         window.clear();
         shape.drawAllPoints(window);
         window.display();
+        if(Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
     }
     while(window.isOpen())
     {
         if(Keyboard::isKeyPressed(Keyboard::Escape))
-    {
-        window.close();
-    }
+        {
+            window.close();
+        }
     }
 }
