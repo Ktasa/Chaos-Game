@@ -17,7 +17,7 @@ public:
     points();
     points(point v1, point v2, point v3, point start_input);
     void addPoint(point p); //vector is private so access here
-    point calcNextPoint();
+    void calcNextPoint();
     void drawAllPoints();
 };
 
