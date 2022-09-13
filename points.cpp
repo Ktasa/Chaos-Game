@@ -38,6 +38,11 @@ void points::drawPoint(point p, sf::RenderWindow &window)
     sf::Vertex dot(sf::Vector2f(p.x, p.y), sf::Color::White);
     window.draw(&dot, 1, sf::Points);
 }
+void points::drawPoint(sf::RenderWindow &window)
+{
+    sf::Vertex dot(sf::Vector2f(allPoints[allPoints.size()-1].x, allPoints[allPoints.size()-1].y), sf::Color::White);
+    window.draw(&dot, 1, sf::Points);
+}
 
 void points::drawAllPoints(sf::RenderWindow &window)
 {

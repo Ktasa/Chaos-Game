@@ -8,7 +8,6 @@ using namespace sf;
 void outputPoints(points& shape, sf::RenderWindow &window)
 {
     srand(time(0));
-    //for(int i=0; i<1000; i++) //predetermined output
     //clicking mouse ends output loop
     while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
     {
@@ -21,6 +20,22 @@ void outputPoints(points& shape, sf::RenderWindow &window)
                 window.close();
             }
     }
+    /*
+    int i=0, j=500; //alternate version goes faster
+    while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
+    {
+            shape.calcNextPoint();
+            shape.drawPoint(window);
+            if(i%j==0)
+            {window.display();}
+            i++;
+            window.display();
+            if(Keyboard::isKeyPressed(Keyboard::Escape))
+            {
+                window.close();
+            }
+    }
+    */
 
     while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
     {
