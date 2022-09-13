@@ -2,6 +2,8 @@
 #define POINTS_H
 #include <vector>
 using namespace std;
+#include <SFML/Graphics.hpp>
+using namespace sf;
 
 struct point
 {
@@ -18,7 +20,7 @@ public:
     points(point v1, point v2, point v3, point start_input);
     void addPoint(point p); //vector is private so access here
     void calcNextPoint();
-    void drawAllPoints();
+    void drawAllPoints(sf::RenderWindow &window);
 };
 
 #endif // POINTS_H
