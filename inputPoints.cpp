@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-void inputPoints(points& shape, sf::RenderWindow &window)
+void inputPoints(points& shape, RenderWindow &window)
 {
     Font final;
     final.loadFromFile("finalf.ttf");
@@ -34,33 +34,41 @@ void inputPoints(points& shape, sf::RenderWindow &window)
 
     point p;
     int numInput = 0;
+    Event event;
     while (numInput < 4 && window.isOpen())
     {
-        if(Keyboard::isKeyPressed(Keyboard::Escape))
+        //Prompt1 does not get to be displayed when user chooses to restart the program for new inputs
+        while(window.pollEvent(event))
         {
-            window.close();
-        }
-        if (numInput==3) //4th point has different prompt
-        {
-            window.draw(prompt2);
-            window.display();
-        }
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            bool mouseIsPressed = true;
-            while (numInput < 4 && mouseIsPressed)
+            if(event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
             {
-                if ( !(sf::Mouse::isButtonPressed(sf::Mouse::Left)) )
+                window.close();
+            }
+            if (numInput==3) //4th point has different prompt
+            {
+                window.draw(prompt2);
+                window.display();
+            }
+            if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
+            {
+                bool mouseIsPressed = true;
+                while (mouseIsPressed)
                 {
-                    sf::Vector2i localPosition = sf::Mouse::getPosition(window);
-                    p.x = localPosition.x;
-                    p.y = localPosition.y;
-                    shape.addPoint(p);
-                    numInput++;
-                    if (numInput == 1) {window.clear();}
-                    mouseIsPressed = false;
-                    shape.drawPoint(p, window);
-                    window.display();
+                    if ( !(Mouse::isButtonPressed(Mouse::Left)) )
+                    {
+                        mouseIsPressed = false;
+                        numInput++;
+                        if(numInput == 1){window.clear();}
+                        if(numInput < 4) //Added if statement here so that last input does not draw a point when starting the chaos game
+                        {
+                            Vector2i localPosition = Mouse::getPosition(window);
+                            p.x = localPosition.x;
+                            p.y = localPosition.y;
+                            shape.addPoint(p);
+                            shape.drawPoint(p, window);
+                            window.display();
+                        }
+                    }
                 }
             }
         }
