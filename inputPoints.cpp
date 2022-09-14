@@ -59,15 +59,12 @@ void inputPoints(points& shape, RenderWindow &window)
                         mouseIsPressed = false;
                         numInput++;
                         if(numInput == 1){window.clear();}
-                        if(numInput < 4) //Added if statement here so that last input does not draw a point when starting the chaos game
-                        {
-                            Vector2i localPosition = Mouse::getPosition(window);
-                            p.x = localPosition.x;
-                            p.y = localPosition.y;
-                            shape.addPoint(p);
-                            shape.drawPoint(p, window);
-                            window.display();
-                        }
+                        Vector2i localPosition = Mouse::getPosition(window);
+                        p.x = localPosition.x;
+                        p.y = localPosition.y;
+                        shape.addPoint(p);
+                        shape.drawPoint(p, window);
+                        window.display();
                     }
                 }
             }
