@@ -9,7 +9,8 @@ void outputPoints(points& shape, sf::RenderWindow &window)
 {
     srand(time(0));
     //clicking mouse ends output loop
-    while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
+    
+    while(window.isOpen() && !(Keyboard::isKeyPressed(Keyboard::Enter)))
     {
             shape.calcNextPoint();
             window.clear();
@@ -20,10 +21,12 @@ void outputPoints(points& shape, sf::RenderWindow &window)
                 window.close();
             }
     }
+    
     /*
     int i=0, j=500; //alternate version goes faster
-    while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
-    {
+    window.clear();
+    while(window.isOpen() && !(Keyboard::isKeyPressed(Keyboard::Enter)))
+    {  
             shape.calcNextPoint();
             shape.drawPoint(window);
             if(i%j==0)
@@ -36,23 +39,7 @@ void outputPoints(points& shape, sf::RenderWindow &window)
             }
     }
     */
-
-    while(window.isOpen() && !(sf::Mouse::isButtonPressed(sf::Mouse::Left)))
-    {
-        if(Keyboard::isKeyPressed(Keyboard::Escape))
-        {
-            window.close();
-        }
-    }
-    //exhaust leftover mouse inputs
-    //can be made easier with events?
-    while(window.isOpen() && (sf::Mouse::isButtonPressed(sf::Mouse::Left)))
-    {
-        if(Keyboard::isKeyPressed(Keyboard::Escape))
-        {
-            window.close();
-        }
-    }
+    
     window.clear();
     shape.emptyPoints();
 }
