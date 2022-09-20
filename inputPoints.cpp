@@ -9,7 +9,7 @@ void inputPoints(points& shape, RenderWindow &window)
     final.loadFromFile("finalf.ttf");
 
     Text prompt1, prompt2;
-    prompt1.setString("CLICK THREE POINTS ON THE SCREEN TO CREATE A TRIANGLE");
+    prompt1.setString("CLICK THREE POINTS ON THE SCREEN TO CREATE A TRIANGLE\n\n            PRESS ENTER TO RESET");
     prompt1.setCharacterSize(75);
     prompt1.setFillColor(Color::White);
     prompt1.setFont(final);
